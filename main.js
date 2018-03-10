@@ -27,3 +27,10 @@ var esperanto = {
 
 var input = [];
 var output;
+
+function gather(inputId) {
+    input = document.getElementById(inputId).value;
+    var inputArr = input.toLowerCase().split(" ");
+    return inputArr;
+}
+console.log(gather("input"));
