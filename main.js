@@ -25,12 +25,26 @@ var esperanto = {
     year: "jaro"
 }
 
-var input = [];
+var input;
+var inputArr = [];
 var output;
 
 function gather(inputId) {
     input = document.getElementById(inputId).value;
-    var inputArr = input.toLowerCase().split(" ");
+    inputArr = input.toLowerCase().split(" ");
     return inputArr;
 }
-console.log(gather("input"));
+var inputArr = gather("input");
+function match(array, langObj) {
+    for (var i=0; i<array.length; i++) {
+        if (array[i] in langObj) {
+            // output += '<h3>' + langObj.merry + ' ' + langObj.christmas + ' ' + langObj.and + ' ' + langObj.happy + ' ' + langObj.new + ' ' + langObj.year + '</h3>';
+            output = "good job"; // Call translate function
+        } else {
+            output = "1 or more words not found.";
+            break
+        }
+    }
+    return output;
+}
+console.log(match(inputArr, spanish));
