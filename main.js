@@ -45,7 +45,10 @@ function match(array, langObj) {
             break
         }
     }
-    return output;
+    writeToDom(output, 'translation');
 }
-
-console.log(match(inputArr, spanish));
+ 
+function writeToDom(string, id) {
+    document.getElementById(id).innerHTML += string;
+}
+match(inputArr, spanish);
