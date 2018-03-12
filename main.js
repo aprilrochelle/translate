@@ -51,4 +51,16 @@ function match(array, langObj) {
 function writeToDom(string, id) {
     document.getElementById(id).innerHTML += string;
 }
-match(inputArr, spanish);
+
+
+// Get the parent DIV, add click listener...
+document.getElementById("parent-div").addEventListener("click",function(e) {
+	// e.target was the clicked element
+  if (e.target && e.target.matches("button#spanish")) {
+    match(inputArr, spanish);
+	} else if (e.target && e.target.matches("button#german")) {
+        match(inputArr, german);
+    } else {
+        match(inputArr, esperanto);
+    }
+});
