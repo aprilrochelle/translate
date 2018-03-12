@@ -34,12 +34,12 @@ function gather(inputId) {
     inputArr = input.toLowerCase().split(" ");
     return inputArr;
 }
-var inputArr = gather("input");
+
 function match(array, langObj) {
+    array = gather("input");
     for (var i=0; i<array.length; i++) {
         if (array[i] in langObj) {
-            // output += '<h3>' + langObj.merry + ' ' + langObj.christmas + ' ' + langObj.and + ' ' + langObj.happy + ' ' + langObj.new + ' ' + langObj.year + '</h3>';
-            output = "good job"; // Call translate function
+            output += langObj[array[i]] + ' ';
         } else {
             output = "1 or more words not found.";
             break
@@ -47,4 +47,5 @@ function match(array, langObj) {
     }
     return output;
 }
+
 console.log(match(inputArr, spanish));
