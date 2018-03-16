@@ -35,11 +35,11 @@ function gather(inputId) {
     return inputArr;
 }
 
-function match(array, langObj) {
-    array = gather("input");
-    for (var i=0; i<array.length; i++) {
-        if (array[i] in langObj) {
-            output += langObj[array[i]] + ' ';
+
+function match(langObj) {
+    for (var i=0; i<inputArr.length; i++) {
+        if (inputArr[i] in langObj) {
+            output += langObj[inputArr[i]] + ' ';
         } else {
             output = "1 or more words not found.";
             break
@@ -55,12 +55,15 @@ function writeToDom(string, id) {
 
 // Get the parent DIV, add click listener...
 document.getElementById("parent-div").addEventListener("click",function(e) {
+    var inputArr = gather("input");
 	// e.target was the clicked element
   if (e.target && e.target.matches("button#spanish")) {
-    match(inputArr, spanish);
+    match(spanish);
 	} else if (e.target && e.target.matches("button#german")) {
-        match(inputArr, german);
+        match(german);
     } else {
-        match(inputArr, esperanto);
+        match(esperanto);
     }
 });
+
+console.log(inputArr)
