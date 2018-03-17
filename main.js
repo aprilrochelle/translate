@@ -25,9 +25,9 @@ var esperanto = {
     year: "jaro"
 }
 
-var input;
+var input = "";
 var inputArr = [];
-var output;
+var output = "";
 
 function gather(inputId) {
     input = document.getElementById(inputId).value;
@@ -65,5 +65,3 @@ document.getElementById("parent-div").addEventListener("click",function(e) {
         match(esperanto);
     }
 });
-
-console.log(inputArr)
