@@ -25,26 +25,43 @@ var esperanto = {
     year: "jaro"
 }
 
-var input;
+var input = "";
 var inputArr = [];
-var output;
+var output = "";
 
 function gather(inputId) {
     input = document.getElementById(inputId).value;
     inputArr = input.toLowerCase().split(" ");
     return inputArr;
 }
-var inputArr = gather("input");
-function match(array, langObj) {
-    for (var i=0; i<array.length; i++) {
-        if (array[i] in langObj) {
-            // output += '<h3>' + langObj.merry + ' ' + langObj.christmas + ' ' + langObj.and + ' ' + langObj.happy + ' ' + langObj.new + ' ' + langObj.year + '</h3>';
-            output = "good job"; // Call translate function
+
+
+function match(langObj) {
+    for (var i=0; i<inputArr.length; i++) {
+        if (inputArr[i] in langObj) {
+            output += langObj[inputArr[i]] + ' ';
         } else {
             output = "1 or more words not found.";
             break
         }
     }
-    return output;
+    writeToDom(output, 'translation');
 }
-console.log(match(inputArr, spanish));
+ 
+function writeToDom(string, id) {
+    document.getElementById(id).innerHTML += string;
+}
+
+
+// Get the parent DIV, add click listener...
+document.getElementById("parent-div").addEventListener("click",function(e) {
+    var inputArr = gather("input");
+	// e.target was the clicked element
+  if (e.target && e.target.matches("button#spanish")) {
+    match(spanish);
+	} else if (e.target && e.target.matches("button#german")) {
+        match(german);
+    } else {
+        match(esperanto);
+    }
+});
