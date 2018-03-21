@@ -37,6 +37,7 @@ function gather(inputId) {
 
 
 function match(langObj) {
+    var inputArr = gather("input");
     for (var i=0; i<inputArr.length; i++) {
         if (inputArr[i] in langObj) {
             output += langObj[inputArr[i]] + ' ';
@@ -49,17 +50,16 @@ function match(langObj) {
 }
  
 function writeToDom(string, id) {
-    document.getElementById(id).innerHTML += string;
+    document.getElementById(id).innerHTML = string;
 }
 
 
 // Get the parent DIV, add click listener...
-document.getElementById("parent-div").addEventListener("click",function(e) {
-    var inputArr = gather("input");
+document.getElementById("parent-div").addEventListener("click", (e) => {
 	// e.target was the clicked element
-  if (e.target && e.target.matches("button#spanish")) {
+  if (e.target.id === "spanish") {
     match(spanish);
-	} else if (e.target && e.target.matches("button#german")) {
+	} else if (e.target.id === "german") {
         match(german);
     } else {
         match(esperanto);
